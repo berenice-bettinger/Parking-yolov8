@@ -53,7 +53,7 @@ Le modèle se trompe très rarement et reste assez rapide pour analyser un flux 
 |---|---|---|---|
 | 0,17 place par image | 0,14 place par image | 84 % | 20 places libres d'écart |
 
-Le compteur se trompe donc en moyenne de moins d'une place sur cinq images. La pire image, avec 20 places d'écart, est un cas isolé à analyser (forte luminosité, pluie ou caméra éloignée). Les pertes d'entraînement et de validation baissent ensemble pendant les 25 époques, sans remontée de la perte de validation : il n'y a pas de signe de surapprentissage.
+Le compteur se trompe donc d'environ une place toutes les six images. La pire image, avec 20 places d'écart, reste un cas isolé qu'il faudrait examiner pour comprendre l'erreur. Les pertes d'entraînement et de validation baissent ensemble pendant les 25 époques, sans remontée de la perte de validation : il n'y a pas de signe de surapprentissage.
 
 <p align="center"><img src="docs/courbes_entrainement.png" alt="Courbes d'entraînement : pertes en baisse, précision, rappel et mAP en hausse sur 25 époques" width="800"></p>
 
