@@ -29,7 +29,7 @@ Trouver une place libre dans un grand parking fait perdre du temps et génère d
 |---|---|
 | Entraînement | 8 690 |
 | Validation | 2 483 |
-| Test | environ 1 240 |
+| Test | 1 242 |
 
 ## Méthode
 
@@ -45,7 +45,15 @@ Sur le **jeu de test** (images jamais vues pendant l'entraînement) :
 |---|---|---|---|---|
 | 0,997 | 0,997 | 0,994 | 0,968 | 4,4 ms par image (GPU T4) |
 
-Le modèle se trompe très rarement et reste assez rapide pour analyser un flux vidéo en direct. Les pertes d'entraînement et de validation baissent ensemble pendant les 25 époques, sans remontée de la perte de validation : il n'y a pas de signe de surapprentissage.
+Le modèle se trompe très rarement et reste assez rapide pour analyser un flux vidéo en direct.
+
+**Le compteur de places est-il juste ?** Pour un utilisateur, la vraie question est le nombre de places libres affiché. Sur les 1 242 images de test, en comparant le compte prédit au compte réel :
+
+| Erreur moyenne (places libres) | Erreur moyenne (places occupées) | Images où le compte est exact | Pire image |
+|---|---|---|---|
+| 0,17 place par image | 0,14 place par image | 84 % | 20 places libres d'écart |
+
+Le compteur se trompe donc en moyenne de moins d'une place sur cinq images. La pire image, avec 20 places d'écart, est un cas isolé à analyser (forte luminosité, pluie ou caméra éloignée). Les pertes d'entraînement et de validation baissent ensemble pendant les 25 époques, sans remontée de la perte de validation : il n'y a pas de signe de surapprentissage.
 
 <p align="center"><img src="docs/courbes_entrainement.png" alt="Courbes d'entraînement : pertes en baisse, précision, rappel et mAP en hausse sur 25 époques" width="800"></p>
 
