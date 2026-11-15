@@ -3,4 +3,5 @@ __pycache__/
 resultats/
 runs/
 *.pt
+!models/best.pt
 .ipynb_checkpoints/

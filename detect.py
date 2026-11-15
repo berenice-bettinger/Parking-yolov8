@@ -1,9 +1,9 @@
 """Détection de places de parking libres / occupées avec un modèle YOLOv8 entraîné sur PKLot.
 
 Exemples :
-    python detect.py --weights best.pt --source parking.jpg
-    python detect.py --weights best.pt --source dossier_images/
-    python detect.py --weights best.pt --source video.mp4
+    python detect.py --source parking.jpg
+    python detect.py --source dossier_images/
+    python detect.py --source video.mp4
 
 Pour chaque image (ou chaque image de la vidéo), le script dessine les places
 libres en vert et les places occupées en rouge, affiche le compte en haut de
@@ -94,7 +94,7 @@ def process_video(model, path, output_dir, roles, conf):
 
 def main():
     parser = argparse.ArgumentParser(description="Compte les places de parking libres et occupées.")
-    parser.add_argument("--weights", default="best.pt", help="modèle YOLOv8 entraîné (.pt)")
+    parser.add_argument("--weights", default="models/best.pt", help="modèle YOLOv8 entraîné (.pt)")
     parser.add_argument("--source", required=True, help="image, dossier d'images ou vidéo")
     parser.add_argument("--output", default="resultats", help="dossier de sortie")
     parser.add_argument("--conf", type=float, default=0.25, help="seuil de confiance (0 à 1)")
